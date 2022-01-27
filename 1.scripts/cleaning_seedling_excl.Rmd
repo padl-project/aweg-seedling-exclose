@@ -1,0 +1,43 @@
+---
+title: "Cleaning Seedling Exclosure Data"
+author: "Camila Vargas"
+date: "1/26/2022"
+output: html_document
+---
+## Set up
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+
+## Load packages
+library(here)
+library(tidyverse)
+library(janitor)
+library(readxl)
+library(freeR)
+
+## Sets R not to use scientific notations
+options(scipen=999) 
+
+raw_data_path <- here::here("6.raw_data/")
+```
+
+## Exploring data
+```{r}
+
+excel_sheets(here::here("6.raw_data/SeedlingExclosures_Cooper.xlsx"))
+
+```
+
+2 sheets found. 
+Data contains all necesary data
+Key contains metadata info
+
+## Read data
+```{r}
+seedling_raw <- read_excel(here::here("6.raw_data/SeedlingExclosures_Cooper.xlsx"), sheet = "Data") %>% 
+  clean_names()
+```
+
+CHECK FOR WARNINGS!
+
