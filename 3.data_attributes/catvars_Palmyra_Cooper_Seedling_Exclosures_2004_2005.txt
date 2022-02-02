@@ -1,0 +1,27 @@
+attributeName	code	definition
+crab_burrow	Y	
+crab_burrow	NA	
+damage_type	Dead	
+damage_type	Gone	
+damage_type	lm1	
+damage_type	LM1	
+damage_type	lm2	
+damage_type	LM2	
+damage_type	lm3	
+damage_type	LM3	
+damage_type	lm4	
+damage_type	LM4	
+damage_type	no damage	
+damage_type	no leaves	
+damage_type	Stem Broken	
+damage_type	Uprooted	
+damage_type	NA	
+herb_present	COBR	
+herb_present	NA	
+sp	PAFI	
+sp	SCSE	
+sp	TECA	
+sp	TOAR	
+tx	1/2	
+tx	cage	
+tx	open	

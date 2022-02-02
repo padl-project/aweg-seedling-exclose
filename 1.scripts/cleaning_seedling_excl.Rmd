@@ -71,7 +71,30 @@ seed_clean <- seedling_raw %>%
          across(8:11, ~as.numeric(.)),
          damage_type = case_when(damage_type != "n/a" ~ damage_type))
 
+## Checking
+str(seed_clean)
+range(seed_clean$date)
+complete(seedling_raw)
+complete(seed_clean)
+
+## function to count n/a in raw data
+count_na <- function(data){apply(data, 2, function(x) sum(x == "n/a", na.rm = T))}
+
+count_na(seedling_raw)
+
+## n/a have been successfully turned into NAs
+## No NAs have been introduced in the process; NA values match
+
 ```
 
 Next steps:
 save data and create metadata doc!
+
+## Save
+
+```{r}
+
+write_csv(seed_clean, here::here("7.clean_data/Palmyra_Cooper_Seedling_Exclosures_2004_2005.csv"))
+
+```
+
