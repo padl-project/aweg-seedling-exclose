@@ -19,7 +19,6 @@ library(freeR)
 ## Sets R not to use scientific notations
 options(scipen=999) 
 
-raw_data_path <- here::here("6.raw_data/")
 ```
 
 ## Exploring data
@@ -39,5 +38,40 @@ seedling_raw <- read_excel(here::here("6.raw_data/SeedlingExclosures_Cooper.xlsx
   clean_names()
 ```
 
-CHECK FOR WARNINGS!
+CHECK FOR WARNINGS! --> Numeric columns with n/a tun into character columns
 
+
+## Inspection
+```{r}
+str(seedling_raw)
+
+## class character but should be numeric. Chanfe n/a to NA
+unique(seedling_raw$hx1)
+unique(seedling_raw$dx1)
+unique(seedling_raw$ux1)
+unique(seedling_raw$lx1)
+
+## class character, check if ok
+unique(seedling_raw$crab_burrow)
+unique(seedling_raw$herb_present)
+unique(seedling_raw$notes)
+
+## checking all character string in each column matches
+
+unique(seedling_raw$tx)
+unique(seedling_raw$sp)
+unique(seedling_raw$damage_type) ## contains "n/a" need to change to actual NAs
+```
+
+
+## Cleaning data
+```{r}
+seed_clean <- seedling_raw %>%
+  mutate(across(8:11, ~replace(., . == "n/a" , NA)),
+         across(8:11, ~as.numeric(.)),
+         damage_type = case_when(damage_type != "n/a" ~ damage_type))
+
+```
+
+Next steps:
+save data and create metadata doc!
