@@ -15,6 +15,7 @@ library(tidyverse)
 library(janitor)
 library(readxl)
 library(freeR)
+library(lubridate)
 
 ## Sets R not to use scientific notations
 options(scipen=999) 
@@ -69,7 +70,8 @@ unique(seedling_raw$damage_type) ## contains "n/a" need to change to actual NAs
 seed_clean <- seedling_raw %>%
   mutate(across(8:11, ~replace(., . == "n/a" , NA)),
          across(8:11, ~as.numeric(.)),
-         damage_type = case_when(damage_type != "n/a" ~ damage_type))
+         damage_type = case_when(damage_type != "n/a" ~ damage_type),
+         date = date(date))
 
 ## Checking
 str(seed_clean)
