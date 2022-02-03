@@ -96,7 +96,7 @@ save data and create metadata doc!
 
 ```{r}
 
-write_csv(seed_clean, here::here("7.clean_data/Palmyra_Cooper_Seedling_Exclosures_2004_2005.csv"))
+write_csv(seed_clean, here::here("7.clean_data/palmyra_cooper_seedling_xxclosures_2004_2005.csv"))
 
 ```
 
